@@ -1,0 +1,29 @@
+{
+    "name": "formatd/geoip",
+    "description": "Neos integration for maxmind geoip2 client",
+    "type": "neos-package",
+    "authors": [
+        {
+            "name": "Format D GmbH",
+            "email": "info@format-d.com",
+            "homepage": "https://www.format-d.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neos/neos": ">=4.0",
+        "geoip2/geoip2": "~2.9.0"
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "FormatD\\GeoIP\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "FormatD.GeoIP"
+        }
+    }
+}
