@@ -2,6 +2,7 @@
     "name": "formatd/geoip",
     "description": "Neos integration for maxmind geoip2 client",
     "type": "neos-package",
+    "license": "MIT",
     "authors": [
         {
             "name": "Format D GmbH",
