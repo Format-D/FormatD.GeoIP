@@ -1,0 +1,45 @@
+
+prototype(FormatD.GeoIP:LocationBasedDimensionSwitchPrompt) >
+prototype(FormatD.GeoIP:LocationBasedDimensionSwitchPrompt) < prototype(Neos.Neos:ContentComponent) {
+
+	dimensionName = ${Configuration.setting('FormatD.GeoIP.locationBasedDimensionSwitch.dimensionName')}
+	dimensionPresets = ${Configuration.setting('Neos.ContentRepository.contentDimensions.' + this.dimensionName + '.presets')}
+	countryIsoCodeToPresetMap = ${Configuration.setting('FormatD.GeoIP.locationBasedDimensionSwitch.countryIsoCodeToPresetMap')}
+	currentDimensionValue = ${Array.first(documentNode.context.dimensions[this.dimensionName])}
+	originCountryIsoCode = ${String.toLowerCase(FormatD.GeoIP.country())}
+	originDimensionValue = ${this.countryIsoCodeToPresetMap[this.originCountryIsoCode]}
+	originDimensionLabel = ${this.dimensionPresets[this.originDimensionValue]['label']}
+	@if.shouldDisplay = ${this.countryIsoCodeToPresetMap[this.originCountryIsoCode] && this.currentDimensionValue != this.countryIsoCodeToPresetMap[this.originCountryIsoCode]}
+	@context.linkTargetDimensionName = ${this.dimensionName}
+	@context.linkTargetDimension = ${this.originDimensionValue}
+	@context.linkDimensions = ${Json.stringify(this.dimensionPresets[this.originDimensionValue]['values'])}
+
+	redirectLink = Neos.Neos:NodeUri {
+		targetLinkContext = ${Json.parse('{"targetDimensions": {"' + linkTargetDimensionName + '": "' + linkTargetDimension + '"}, "dimensions": {"' + linkTargetDimensionName + '": ' + linkDimensions + '}}', true)}
+		node = ${q(documentNode).context(this.targetLinkContext).count() > 0 ?
+        				q(documentNode).context(this.targetLinkContext).get(0) :
+        				q(site).context(this.targetLinkContext).get(0)}
+	}
+
+	renderer = afx`
+		<div id="lbds-prompt" class="card" style="display:none;" >
+			<div class="lbds-content">
+				{Translation.translate('prompt.text', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+			</div>
+			<a id="lbds-button-redirect" href={props.redirectLink} class="btn">
+				{Translation.translate('prompt.button.redirect', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+			</a>
+			<button id="lbds-button-close" class="btn" type="submit">
+				{Translation.translate('prompt.button.close', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+			</button>
+		</div>
+	`
+
+	@cache {
+		mode = 'uncached'
+		context {
+			1 = 'documentNode'
+			2 = 'site'
+		}
+	}
+}

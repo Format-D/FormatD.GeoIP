@@ -1,0 +1,17 @@
+FormatD:
+  GeoIP:
+    geoIpUserId: 0
+    geoIpLicense: ''
+    debug:
+      enable: false
+      simulateIpAddress: '8.8.8.8' # example us ip (google)
+    locationBasedDimensionSwitch:
+      dimensionName: 'country'
+#      countryIsoCodeToPresetMap:
+#        gb: 'uk'
+#        de: 'de'
+
+Neos:
+  Fusion:
+    defaultContext:
+      'FormatD.GeoIP': 'FormatD\GeoIP\Eel\Helper\GeoIPHelper'

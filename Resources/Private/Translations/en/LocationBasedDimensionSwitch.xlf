@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" product-name="FormatD.GeoIP" source-language="en" datatype="plaintext">
+		<body>
+            <trans-unit id="prompt.text" xml:space="preserve">
+				<source>We would like to redirect you to our official site for {0}.</source>
+			</trans-unit>
+			<trans-unit id="prompt.button.redirect" xml:space="preserve">
+				<source>To {0}</source>
+			</trans-unit>
+			<trans-unit id="prompt.button.close" xml:space="preserve">
+				<source>No thanks</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

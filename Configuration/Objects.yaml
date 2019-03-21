@@ -1,0 +1,10 @@
+
+'FormatD\GeoIP\Service\IPLocalizationService':
+  properties:
+    cacheFrontend:
+      object:
+        factoryObjectName: 'Neos\Flow\Cache\CacheManager'
+        factoryMethodName: getCache
+        arguments:
+          1:
+            value: FormatD_GeoIP_Service_IPLocalizationCache
