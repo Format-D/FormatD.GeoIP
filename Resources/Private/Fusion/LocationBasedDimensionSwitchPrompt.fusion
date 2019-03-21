@@ -22,16 +22,20 @@ prototype(FormatD.GeoIP:LocationBasedDimensionSwitchPrompt) < prototype(Neos.Neo
 	}
 
 	renderer = afx`
-		<div id="lbds-prompt" class="card" style="display:none;" >
-			<div class="lbds-content">
-				{Translation.translate('prompt.text', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+		<div id="lbds-prompt" style="display:none;" >
+			<div class="lbds-content-wrapper">
+				<div class="lbds-content">
+					{Translation.translate('prompt.text', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+				</div>
+				<div class="lbds-btn-wrapper">
+					<a id="lbds-button-redirect" href={props.redirectLink} class="btn">
+						{Translation.translate('prompt.button.redirect', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+					</a>
+					<button id="lbds-button-close" class="btn" type="submit">
+						{Translation.translate('prompt.button.close', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
+					</button>
+				</div>
 			</div>
-			<a id="lbds-button-redirect" href={props.redirectLink} class="btn">
-				{Translation.translate('prompt.button.redirect', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
-			</a>
-			<button id="lbds-button-close" class="btn" type="submit">
-				{Translation.translate('prompt.button.close', null, [props.originDimensionLabel, props.originDimensionValue], 'LocationBasedDimensionSwitch', 'FormatD.GeoIP')}
-			</button>
 		</div>
 	`
 

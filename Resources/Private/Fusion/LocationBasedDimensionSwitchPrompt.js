@@ -5,6 +5,10 @@ export default function locationBasedDimensionSwitchPrompt() {
 		let prompt = $('#lbds-prompt'),
 			promptCloseButton = $('#lbds-button-close');
 
+		if (!prompt.length) {
+			return;
+		}
+
 		if(document.cookie.indexOf('lbds_status=1') == -1) {
 			prompt.show();
 		}
