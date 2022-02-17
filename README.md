@@ -24,7 +24,7 @@ Releases und compatibility:
 
 | Package-Version | Neos CMS Version |
 |-----------------|------------------|
-| 1.0.x           | 4.x, 5.x         |
+| 1.0.x           | 4.x              |
 
 
 ## Using the service in you own plugins
