@@ -10,6 +10,23 @@ This package provides a service-class and eel-helper to access the geo-informati
 Optionally you can integrate a prompt to redirect the user to the content dimension matching his current location.
 
 
+## Compatibility
+
+Versioning scheme:
+
+     1.0.0 
+     | | |
+     | | Bugfix Releases (non breaking)
+     | Neos Compatibility Releases (non breaking except framework dependencies)
+     Feature Releases (breaking)
+
+Releases und compatibility:
+
+| Package-Version | Neos CMS Version |
+|-----------------|------------------|
+| 1.0.x           | 4.x, 5.x         |
+
+
 ## Using the service in you own plugins
 
 Inject the IPLocalizationService into your class and call the method according to the maxmind endpoint (getCountry, getCity, getInsights). 
