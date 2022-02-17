@@ -11,8 +11,8 @@ use GeoIp2\Model\Insights;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Core\Bootstrap;
 use Neos\Flow\Http\HttpRequestHandlerInterface;
-use Neos\Flow\Log\PsrSystemLoggerInterface;
 use GeoIp2\WebService\Client;
+use Psr\Log\LoggerInterface;
 
 /**
  * Service for handling localization information of an ip address
@@ -54,8 +54,8 @@ class IPLocalizationService {
 	protected $debugSimulateIpAddress;
 
 	/**
-	 * @Flow\Inject
-	 * @var PsrSystemLoggerInterface
+	 * @var LoggerInterface
+	 * @Flow\Inject(name="Neos.Flow:SystemLogger")
 	 */
 	protected $systemLogger;
 
