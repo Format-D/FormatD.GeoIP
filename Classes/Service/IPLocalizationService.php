@@ -169,7 +169,7 @@ class IPLocalizationService {
 			return NULL;
 		}
 
-		$ip = $activeRequestHandler->getHttpRequest()->getClientIpAddress();
+        $ip = $activeRequestHandler->getHttpRequest()->getServerParams()['REMOTE_ADDR'];
 
 		if ($this->debug && $this->debugSimulateIpAddress) {
 			$ip = $this->debugSimulateIpAddress;
