@@ -26,7 +26,7 @@ Releases und compatibility:
 |-----------------|------------------|
 | 1.0.x           | 4.x              |
 | 1.1.x           | 5.x              |
-| 1.2.x           | 7.x              |
+| 1.2.x           | 7.x, 8.x         |
 
 ## Using the service in you own plugins
 
