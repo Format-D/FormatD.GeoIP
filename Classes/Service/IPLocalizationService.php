@@ -11,6 +11,7 @@ use GeoIp2\Model\Insights;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Core\Bootstrap;
 use Neos\Flow\Http\HttpRequestHandlerInterface;
+use Neos\Flow\Http\ServerRequestAttributes;
 use GeoIp2\WebService\Client;
 use Psr\Log\LoggerInterface;
 
@@ -169,7 +170,9 @@ class IPLocalizationService {
 			return NULL;
 		}
 
-        $ip = $activeRequestHandler->getHttpRequest()->getServerParams()['REMOTE_ADDR'];
+		$httpRequest = $activeRequestHandler->getHttpRequest();
+		$potentialClientIp = $httpRequest->getAttribute(ServerRequestAttributes::CLIENT_IP);
+		$ip = $potentialClientIp ? $potentialClientIp : ($httpRequest->getServerParams()['REMOTE_ADDR'] ?? NULL);
 
 		if ($this->debug && $this->debugSimulateIpAddress) {
 			$ip = $this->debugSimulateIpAddress;
